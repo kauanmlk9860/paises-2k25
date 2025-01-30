@@ -10,13 +10,12 @@ const paises = ["França", "Estados Unidos", "Brasil", "Zimbábue", "Suíça"];
 
 // Trocar a imagem ativa
 function trocarImg() {
-    imagens.forEach(img => img.classList.remove("ativa")); // Remove a classe ativa de todas
-    imagens[indice].classList.add("ativa"); // Ativa a imagem atual
-
-    indice = (indice + 1) % imagens.length; // Alterna entre as imagens
+    imagens.forEach(img => img.classList.remove("ativa")); 
+    imagens[indice].classList.add("ativa"); 
+    indice = (indice + 1) % imagens.length; 
 }
 
-// Pesquisar imagens
+
 function pesquisarImagem() {
     const termo = inputPesquisa.value.toLowerCase();
 
@@ -29,10 +28,8 @@ function pesquisarImagem() {
     });
 }
 
-// Eventos
 botaoTrocarImg.addEventListener('click', trocarImg);
 botaoBuscar.addEventListener('click', pesquisarImagem);
 inputPesquisa.addEventListener('input', pesquisarImagem);
 
-// Exibir a primeira imagem automaticamente
 trocarImg();
