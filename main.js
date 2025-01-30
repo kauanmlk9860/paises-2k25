@@ -1,17 +1,38 @@
-"use strict"
+"use strict";
 
-const botaoTrocarImg = document.getElementById('trocar-fundo')
-const body = document.getElementById('body')
-let numero = 0
-let  urlImg = ""
+const botaoTrocarImg = document.getElementById('trocar-fundo');
+const botaoBuscar = document.getElementById('buscar');
+const inputPesquisa = document.getElementById('pesquisa');
+const imagens = document.querySelectorAll(".imagem");
 
-function trocarImg(){
-    if(numero === 5){
-        numero = 0
-    }
-    numero++
-    urlImg = `url(./img/pais${numero}.jpg`
-    document.documentElement.style.setProperty('--fundo', urlImg)
+let indice = 0;
+const paises = ["França", "Estados Unidos", "Brasil", "Zimbábue", "Suíça"];
+
+// Trocar a imagem ativa
+function trocarImg() {
+    imagens.forEach(img => img.classList.remove("ativa")); // Remove a classe ativa de todas
+    imagens[indice].classList.add("ativa"); // Ativa a imagem atual
+
+    indice = (indice + 1) % imagens.length; // Alterna entre as imagens
 }
 
-botaoTrocarImg.addEventListener('click', trocarImg)
+// Pesquisar imagens
+function pesquisarImagem() {
+    const termo = inputPesquisa.value.toLowerCase();
+
+    imagens.forEach((img, index) => {
+        if (paises[index].toLowerCase().includes(termo) || termo === "") {
+            img.classList.add("ativa");
+        } else {
+            img.classList.remove("ativa");
+        }
+    });
+}
+
+// Eventos
+botaoTrocarImg.addEventListener('click', trocarImg);
+botaoBuscar.addEventListener('click', pesquisarImagem);
+inputPesquisa.addEventListener('input', pesquisarImagem);
+
+// Exibir a primeira imagem automaticamente
+trocarImg();

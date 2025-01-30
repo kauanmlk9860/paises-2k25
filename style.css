@@ -1,61 +1,59 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-ul, ol, li{
-    list-style: none;
-}
-
-button{
-    border: none;
-    cursor: pointer;
-}
-
-:root{
-    --fundo: url('#');
-}
-
-body{
+.container {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 15px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 15px 20px;
+    border-radius: 50px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 10; /* Garante que a barra de pesquisa fique na frente */
+}
+
+input {
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 25px;
+    font-size: 16px;
+    outline: none;
+    width: 200px;
+    text-align: center;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: black;
+    color: white;
+}
+
+button:hover {
+    background-color: gray;
+}
+
+#galeria {
     width: 100vw;
     height: 100vh;
-    transition: 1s;
-
-    background-color: black;
-    background-image: var(--fundo);
-    background-size: cover;
-    background-repeat: no-repeat;
+    overflow: hidden;
 }
 
-.container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ffffff;
-    padding: 10px;
-    border-radius: 50px;
-    border: 1px solid black;
-    transition: 500ms;
+.imagem {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
 }
 
-#trocar-fundo{
-    padding: 5px;
-    height: 100%;
-    width: 100%;
-    background-color: transparent;
-}
-
-.container:hover{
-    transform: scale(1.1);
-    /* background-color: #00000080; */
-    color: aliceblue;
+.imagem.ativa {
+    opacity: 1;
 }
